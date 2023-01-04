@@ -21,14 +21,13 @@ $(document).ready(function() {
     console.log(hour)
 
     $(".time-block").each(function() {
-      var currentHour = parseInt($(this).attr("id"));
+      var currentHour = parseInt($(this).attr("id").split('-')[1]);
       
       if (currentHour < hour) {
         $(this).addClass("past");
       }
       else if (currentHour === hour) {
         $(this).removeClass("past");
-        $(this).removeClass("future");
         $(this).addClass("present");
       }
       else {
@@ -40,16 +39,7 @@ $(document).ready(function() {
   };
 
 
-  //     if (currentHour < hour) {
-  //       $(this).addClass("past");
-  //     } else if (currentHour === hour) {
-  //       $(this).addClass("present");
-  //     } else {
-  //       $(this).addClass("future");
-  //     }
-  //   })
-  // };
- 
+
 
 timeBlockColor();
 
