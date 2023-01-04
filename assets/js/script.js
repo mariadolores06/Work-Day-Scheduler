@@ -15,21 +15,40 @@ $(document).ready(function() {
     localStorage.setItem(time, text);
   });
 
+  
   function timeBlockColor() {
     var hour = dayjs().hour();
+    console.log(hour)
 
     $(".time-block").each(function() {
       var currentHour = parseInt($(this).attr("id"));
-
-      if (currentHour > hour) {
-        $(this).addClass("future");
-      } else if (currentHour === hour) {
-        $(this).addClass("present");
-      } else {
+      
+      if (currentHour < hour) {
         $(this).addClass("past");
+      }
+      else if (currentHour === hour) {
+        $(this).removeClass("past");
+        $(this).removeClass("future");
+        $(this).addClass("present");
+      }
+      else {
+        $(this).removeClass("past");
+        $(this).removeClass("present");
+        $(this).addClass("future");
       }
     })
   };
+
+
+  //     if (currentHour < hour) {
+  //       $(this).addClass("past");
+  //     } else if (currentHour === hour) {
+  //       $(this).addClass("present");
+  //     } else {
+  //       $(this).addClass("future");
+  //     }
+  //   })
+  // };
  
 
 timeBlockColor();
